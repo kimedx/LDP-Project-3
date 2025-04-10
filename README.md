@@ -43,19 +43,24 @@ spark-submit --class project_3.main --master local[*] target/scala-2.12/project_
 spark-submit --class "project_3.main" --master "local[*]" target/scala-2.12/project_3_2.12-1.0.jar compute [path_to_input_graph] [path_for_output_graph]
 ```
 Apply `LubyMIS` locally on the graph files listed below and report the number of iterations and running time that the MIS algorithm consumes for **each file**. You may need to include additional print statements in `LubyMIS` in order to acquire this information. Finally, verify your outputs with `verifyMIS`.
-|        Graph file       | Number of Iterations | Running Time (Local) | Running Time (GCP) |
-| ----------------------- | -------------------- | -------------------- | ------------------ |
-| small_edges.csv         | 2 iterations         | 1s                   |  |
-| line_100_edges.csv      | 2 iterations         | 1s                   |  |
-| twitter_100_edges.csv   | 2 iterations         | 1s                   |  |
-| twitter_1000_edges.csv  | 2 iterations         | 1s                   |  |
-| twitter_10000_edges.csv | 3 iterations         | 2s                   |  |
+|        Graph file       | Number of Iterations | Running Time |
+| ----------------------- | -------------------- | ------------ |
+| small_edges.csv         | 2 iterations         | 1s           |
+| line_100_edges.csv      | 2 iterations         | 1s           |
+| twitter_100_edges.csv   | 2 iterations         | 1s           |
+| twitter_1000_edges.csv  | 2 iterations         | 1s           |
+| twitter_10000_edges.csv | 3 iterations         | 2s           |
 
 3. **(3 points)**  
 a. Run `LubyMIS` on `twitter_original_edges.csv` in GCP with 3x4 cores (vCPUs). Report the number of iterations, running time, and remaining active vertices (i.e. vertices whose status has yet to be determined) at the end of **each iteration**. You may need to include additional print statements in `LubyMIS` in order to acquire this information. Finally, verify your outputs with `verifyMIS`.  
 b. Run `LubyMIS` on `twitter_original_edges.csv` with 4x2 cores (vCPUs) and then 2x2 cores (vCPUs). Compare the running times between the 3 jobs with varying core specifications that you submitted in **3a** and **3b**.
-| Graph file |  |  |
-|------------|--|--|
+
+| vCPU Cores | Number of Iterations | Running Time |
+|------------| -------------------- | ------------ |
+| 3x4 Cores  |  iterations | s |
+| 4x2 Cores  |  iterations | s |
+| 2x2 Cores  |  iterations | s |
+
 
 
 ## Submission via GitHub
