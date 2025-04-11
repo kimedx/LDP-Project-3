@@ -26,7 +26,7 @@ Worked alone (Harim Kim)
 | vCPU Cores | Number of Iterations | Running Time | Active Edges After Each Iteration |
 |------------| -------------------- | ------------ | --------------------------------- |
 | 3x4 Cores  |  iterations | s | 11,316,811 &rarr; 6,754,779 &rarr; 35,911 &rarr; 669 &rarr; 49 &rarr; 1 |
-| 4x2 Cores  |  iterations | s | 11,316,811 &rarr;  &rarr;  &rarr;  &rarr; |
+| 4x2 Cores  |  iterations | s | 11,316,811 &rarr; 6,812,852 &rarr; 35,361  &rarr; 391 &rarr; 4 &rarr; 1 |
 | 2x2 Cores  | 5 iterations | 808s | 11,316,811 &rarr;  &rarr;  &rarr;  &rarr; |
 
 ## Getting started
