@@ -16,6 +16,7 @@ object main{
   Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
   Logger.getLogger("org.spark-project").setLevel(Level.WARN)
 
+  /* Luby's Algorithm to create MIS */
   def LubyMIS(g_in: Graph[Int, Int]): Graph[Int, Int] = {
     var g = g_in.mapVertices((id, _) => 0)
     var iteration = 0
@@ -83,6 +84,7 @@ object main{
     return g
   }
 
+  /* Function to verified whether latter input is an MIS of the prior input */
   def verifyMIS(g_in: Graph[Int, Int]): Boolean = {
 
     /* Checks for independence */
