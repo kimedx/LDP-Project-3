@@ -24,11 +24,11 @@ Link for resulting MIS files: https://drive.google.com/file/d/1Ba7oTAmYCRN8_KjjE
 | twitter_10000_edges.csv | 3 iterations         | 2s           |
 
 ### Part 3 (GCP)
-| vCPU Cores | Number of Iterations | Running Time | Active Edges After Each Iteration |
-|------------| -------------------- | ------------ | --------------------------------- |
-| Local      | 5 iterations         | 149s         | 11,316,811 &rarr; 6,812,852 &rarr; 35,361 &rarr; 391 &rarr; 4 &rarr; 1  |
-| 4x2 Cores  | 5 iterations         | 637s         | 11,316,811 &rarr; 6,707,093 &rarr; 35,041 &rarr; 443 &rarr; 17 &rarr; 1 |
-| 2x2 Cores  | 5 iterations         | 808s         | 11,316,811 &rarr; 6,754,779 &rarr; 35,911 &rarr; 669 &rarr; 49 &rarr; 1 |
+| vCPU Cores | Number of Iterations | Run Time | Active Edges After Each Iteration |
+|------------| -------------------- | -------- | --------------------------------- |
+| Local      | 5 iterations         | 149s     | 11,316,811 &rarr; 6,812,852 &rarr; 35,361 &rarr; 391 &rarr; 4 &rarr; 1  |
+| 4x2 Cores  | 5 iterations         | 637s     | 11,316,811 &rarr; 6,707,093 &rarr; 35,041 &rarr; 443 &rarr; 17 &rarr; 1 |
+| 2x2 Cores  | 5 iterations         | 808s     | 11,316,811 &rarr; 6,754,779 &rarr; 35,911 &rarr; 669 &rarr; 49 &rarr; 1 |
 
 I added Local results in lieu of 3x4 vCPU results as GCP did not allow me to assign 3x4 vCPU even after requesting for additional allocations (I can provide documentation regarding the request and response if necessary).
 
