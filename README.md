@@ -1,4 +1,36 @@
 # Large Scale Data Processing: Project 3
+
+Worked alone (Harim Kim)
+
+## Results for Submission
+### Part 1 (verifyMIS)
+|        Graph file       |           MIS file           | Is an MIS? |
+| ----------------------- | ---------------------------- | ---------- |
+| small_edges.csv         | small_edges_MIS.csv          | Yes        |
+| small_edges.csv         | small_edges_non_MIS.csv      | No         |
+| line_100_edges.csv      | line_100_MIS_test_1.csv      | Yes        |
+| line_100_edges.csv      | line_100_MIS_test_2.csv      | No         |
+| twitter_10000_edges.csv | twitter_10000_MIS_test_1.csv | No         |
+| twitter_10000_edges.csv | twitter_10000_MIS_test_2.csv | Yes        |
+
+### Part 2 (LubyMIS)
+|        Graph file       | Number of Iterations | Running Time |
+| ----------------------- | -------------------- | ------------ |
+| small_edges.csv         | 2 iterations         | 1s           |
+| line_100_edges.csv      | 2 iterations         | 1s           |
+| twitter_100_edges.csv   | 2 iterations         | 1s           |
+| twitter_1000_edges.csv  | 2 iterations         | 1s           |
+| twitter_10000_edges.csv | 3 iterations         | 2s           |
+
+### Part 3 (GCP)
+| vCPU Cores | Number of Iterations | Running Time | Active Edges After Each Iteration |
+|------------| -------------------- | ------------ | --------------------------------- |
+| Local      | 5 iterations         | 149s         | 11,316,811 &rarr; 6,812,852 &rarr; 35,361 &rarr; 391 &rarr; 4 &rarr; 1  |
+| 4x2 Cores  | 5 iterations         | 637s         | 11,316,811 &rarr; 6,707,093 &rarr; 35,041 &rarr; 443 &rarr; 17 &rarr; 1 |
+| 2x2 Cores  | 5 iterations         | 808s         | 11,316,811 &rarr; 6,754,779 &rarr; 35,911 &rarr; 669 &rarr; 49 &rarr; 1 |
+
+I added Local results in lieu of 3x4 vCPU results as GCP did not allow me to assign 3x4 vCPU even after requesting for additional allocations (I can provide documentation regarding the request and response if necessary).
+
 ## Getting started
 Head to [Project 1](https://github.com/CSCI3390Spring2025/project_1) if you're looking for information on Git, template repositories, or setting up your local/remote environments.
 
@@ -29,10 +61,10 @@ Apply `verifyMIS` locally with the parameter combinations listed in the table be
 | ----------------------- | ---------------------------- | ---------- |
 | small_edges.csv         | small_edges_MIS.csv          | Yes        |
 | small_edges.csv         | small_edges_non_MIS.csv      | No         |
-| line_100_edges.csv      | line_100_MIS_test_1.csv      | ?          |
-| line_100_edges.csv      | line_100_MIS_test_2.csv      | ?          |
-| twitter_10000_edges.csv | twitter_10000_MIS_test_1.csv | ?          |
-| twitter_10000_edges.csv | twitter_10000_MIS_test_2.csv | ?          |
+| line_100_edges.csv      | line_100_MIS_test_1.csv      | Yes        |
+| line_100_edges.csv      | line_100_MIS_test_2.csv      | No         |
+| twitter_10000_edges.csv | twitter_10000_MIS_test_1.csv | No         |
+| twitter_10000_edges.csv | twitter_10000_MIS_test_2.csv | Yes        |
 
 2. **(3 points)** Implement the `LubyMIS` function. The function accepts a Graph[Int, Int] object as its input. You can ignore the two integers associated with the vertex RDD and the edge RDD as they are dummy fields. `LubyMIS` should return a Graph[Int, Int] object such that the integer in a vertex's data field denotes whether or not the vertex is in the MIS, with 1 signifying membership and -1 signifying non-membership. The output will be written as a CSV file to the output path you provide. To execute the function, run the following:
 ```
@@ -43,17 +75,25 @@ spark-submit --class project_3.main --master local[*] target/scala-2.12/project_
 spark-submit --class "project_3.main" --master "local[*]" target/scala-2.12/project_3_2.12-1.0.jar compute [path_to_input_graph] [path_for_output_graph]
 ```
 Apply `LubyMIS` locally on the graph files listed below and report the number of iterations and running time that the MIS algorithm consumes for **each file**. You may need to include additional print statements in `LubyMIS` in order to acquire this information. Finally, verify your outputs with `verifyMIS`.
-|        Graph file       |
-| ----------------------- |
-| small_edges.csv         |
-| line_100_edges.csv      |
-| twitter_100_edges.csv   |
-| twitter_1000_edges.csv  |
-| twitter_10000_edges.csv |
+|        Graph file       | Number of Iterations | Running Time |
+| ----------------------- | -------------------- | ------------ |
+| small_edges.csv         | 2 iterations         | 1s           |
+| line_100_edges.csv      | 2 iterations         | 1s           |
+| twitter_100_edges.csv   | 2 iterations         | 1s           |
+| twitter_1000_edges.csv  | 2 iterations         | 1s           |
+| twitter_10000_edges.csv | 3 iterations         | 2s           |
 
 3. **(3 points)**  
 a. Run `LubyMIS` on `twitter_original_edges.csv` in GCP with 3x4 cores (vCPUs). Report the number of iterations, running time, and remaining active vertices (i.e. vertices whose status has yet to be determined) at the end of **each iteration**. You may need to include additional print statements in `LubyMIS` in order to acquire this information. Finally, verify your outputs with `verifyMIS`.  
 b. Run `LubyMIS` on `twitter_original_edges.csv` with 4x2 cores (vCPUs) and then 2x2 cores (vCPUs). Compare the running times between the 3 jobs with varying core specifications that you submitted in **3a** and **3b**.
+
+| vCPU Cores | Number of Iterations | Running Time |
+|------------| -------------------- | ------------ |
+| 3x4 Cores  |  iterations | s |
+| 4x2 Cores  |  iterations | s |
+| 2x2 Cores  |  iterations | s |
+
+
 
 ## Submission via GitHub
 Delete your project's current **README.md** file (the one you're reading right now) and include your report as a new **README.md** file in the project root directory. Have no fear—the README with the project description is always available for reading in the template repository you created your repository from. For more information on READMEs, feel free to visit [this page](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes) in the GitHub Docs. You'll be writing in [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown). Be sure that your repository is up to date and you have pushed all changes you've made to the project's code. When you're ready to submit, simply provide the link to your repository in the Canvas assignment's submission.
