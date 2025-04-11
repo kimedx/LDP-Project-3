@@ -25,7 +25,7 @@ Worked alone (Harim Kim)
 ### Part 3 (GCP)
 | vCPU Cores | Number of Iterations | Running Time | Active Edges After Each Iteration |
 |------------| -------------------- | ------------ | --------------------------------- |
-| 3x4 Cores  |  iterations | s | 11,316,811 >  |
+| 3x4 Cores  |  iterations | s | 11,316,811 &rarr;   |
 | 4x2 Cores  |  iterations | s | 11,316,811 >  |
 | 2x2 Cores  |  iterations | s | 11,316,811 >  |
 
