@@ -29,6 +29,8 @@ Worked alone (Harim Kim)
 | 4x2 Cores  | 5 iterations         | 637s         | 11,316,811 &rarr; 6,707,093 &rarr; 35,041 &rarr; 443 &rarr; 17 &rarr; 1 |
 | 2x2 Cores  | 5 iterations         | 808s         | 11,316,811 &rarr; 6,754,779 &rarr; 35,911 &rarr; 669 &rarr; 49 &rarr; 1 |
 
+I added Local results in lieu of 3x4 vCPU results as GCP did not allow me to assign 3x4 vCPU even after requesting for additional allocations (I can provide documentation regarding the request and response if necessary).
+
 ## Getting started
 Head to [Project 1](https://github.com/CSCI3390Spring2025/project_1) if you're looking for information on Git, template repositories, or setting up your local/remote environments.
 
