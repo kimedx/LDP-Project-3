@@ -25,9 +25,9 @@ Worked alone (Harim Kim)
 ### Part 3 (GCP)
 | vCPU Cores | Number of Iterations | Running Time | Active Edges After Each Iteration |
 |------------| -------------------- | ------------ | --------------------------------- |
-| 3x4 Cores  |  iterations | s | 11,316,811 &rarr; 6,754,779 &rarr; 35,911 &rarr; 669 &rarr; 49 &rarr; 1 |
-| 4x2 Cores  |  iterations | s | 11,316,811 &rarr; 6,812,852 &rarr; 35,361  &rarr; 391 &rarr; 4 &rarr; 1 |
-| 2x2 Cores  | 5 iterations | 808s | 11,316,811 &rarr;  &rarr;  &rarr;  &rarr; |
+| Local      | 5 iterations         | 149s         | 11,316,811 &rarr; 6,812,852 &rarr; 35,361 &rarr; 391 &rarr; 4 &rarr; 1  |
+| 4x2 Cores  | 5 iterations         | 637s         | 11,316,811 &rarr; 6,707,093 &rarr; 35,041 &rarr; 443 &rarr; 17 &rarr; 1 |
+| 2x2 Cores  | 5 iterations         | 808s         | 11,316,811 &rarr; 6,754,779 &rarr; 35,911 &rarr; 669 &rarr; 49 &rarr; 1 |
 
 ## Getting started
 Head to [Project 1](https://github.com/CSCI3390Spring2025/project_1) if you're looking for information on Git, template repositories, or setting up your local/remote environments.
