@@ -23,11 +23,11 @@ Worked alone (Harim Kim)
 | twitter_10000_edges.csv | 3 iterations         | 2s           |
 
 ### Part 3 (GCP)
-| vCPU Cores | Number of Iterations | Running Time |
-|------------| -------------------- | ------------ |
-| 3x4 Cores  |  iterations | s |
-| 4x2 Cores  |  iterations | s |
-| 2x2 Cores  |  iterations | s |
+| vCPU Cores | Number of Iterations | Running Time | Active Edges After Each Iteration |
+|------------| -------------------- | ------------ | --------------------------------- |
+| 3x4 Cores  |  iterations | s | 11,316,811 >  |
+| 4x2 Cores  |  iterations | s | 11,316,811 >  |
+| 2x2 Cores  |  iterations | s | 11,316,811 >  |
 
 ## Getting started
 Head to [Project 1](https://github.com/CSCI3390Spring2025/project_1) if you're looking for information on Git, template repositories, or setting up your local/remote environments.
