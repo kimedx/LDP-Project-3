@@ -1,3 +1,14 @@
+error id: `<none>`.
+file://<WORKSPACE>/src/main/scala/project_3/main.scala
+empty definition using pc, found symbol in pc: `<none>`.
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 906
+uri: file://<WORKSPACE>/src/main/scala/project_3/main.scala
+text:
+```scala
 package project_3
 
 import org.apache.spark.sql.SparkSession
@@ -17,79 +28,19 @@ object main{
   Logger.getLogger("org.spark-project").setLevel(Level.WARN)
 
   def LubyMIS(g_in: Graph[Int, Int]): Graph[Int, Int] = {
-    var g = g_in.mapVertices((id, _) => 0)
-    var iteration = 0
-    var remaining_vertices = g.vertices.filter { case (_, attr) => attr == 0 }.count()
-
     while (remaining_vertices >= 1) {
-      iteration += 1
-      /* Prints remaining active vertices before each iteration */
-      println("==================================")
-      println("Before iteration " + iteration + ": " + remaining_vertices + " active vertices.")
-      println("==================================")
-
-      /* Priotity queue based on randomly assigned double values */
-      val priorityGraph = g.mapVertices((id, attr) => {
-        val prio = if (attr == 0) scala.util.Random.nextDouble() else -1.0
-        (attr, prio)
-      })
-
-      val maxNeighborPrio = priorityGraph.aggregateMessages[Double](
-        triplet => {
-          val (srcState, srcPrio) = triplet.srcAttr
-          val (dstState, dstPrio) = triplet.dstAttr
-          if (srcState == 0 && dstState == 0) {
-            triplet.sendToSrc(dstPrio)
-            triplet.sendToDst(srcPrio)
-          }
-        },
-        math.max
-      )
-
-      val selected = priorityGraph.vertices.leftOuterJoin(maxNeighborPrio).mapValues {
-        case ((state, prio), Some(maxN)) => if (prio > maxN) 1 else 0
-        case ((state, prio), None) => 1
-      }
-
-      /* Choose which vertices are actually part of the MIS */
-      val withMIS = g.joinVertices(selected) {
-        case (_, oldState, selectedFlag) =>
-          if (oldState == 0 && selectedFlag == 1) 1 else oldState
-      }
-
-      val removeNeighbors = withMIS.aggregateMessages[Int](
-        triplet => {
-          if (triplet.srcAttr == 1 && triplet.dstAttr == 0)
-            triplet.sendToDst(-1)
-          if (triplet.dstAttr == 1 && triplet.srcAttr == 0)
-            triplet.sendToSrc(-1)
-        },
-        (a, b) => a
-      )
-
-      val finalGraph = withMIS.joinVertices(removeNeighbors) {
-        case (_, state, removalFlag) =>
-          if (state == 0) -1 else state
-      }
-
-      g = finalGraph
-      remaining_vertices = g.vertices.filter { case (_, attr) => attr == 0 }.count()
+        // To Implement
     }
-
-    /* Prints iterations */
-    println("==================================")
-    println("LubyMIS completed in " + iteration + " iterations.")
-    println("==================================")
-    return g
   }
 
-  def verifyMIS(g_in: Graph[Int, Int]): Boolean = {
 
-    /* Checks for independence */
-    val violations = g_in.triplets.filter(t => t.srcAttr == 1 && t.dstAttr == 1).count()
+  def verifyMIS(g_in: Graph[Int, Int]): Boolean = {
+    // To Implement
+    // 1. Check for independence: no two adjacent vertices in MIS (i.e., both labeled 1)
+    val violations = g_in.triplets.filter(t => t.s@@rcAttr == 1 && t.dstAttr == 1).count()
     if (violations > 0) return false
 
-    /* Checks for maximality */
+    // 2. Check for maximality: every vertex not in MIS should have at least one neighbor in MIS
     val maxCheck = g_in.aggregateMessages[Int](
       triplet => {
         if (triplet.srcAttr == 1 && triplet.dstAttr == -1)
@@ -100,15 +51,16 @@ object main{
       (a, b) => a + b
     )
 
-    /* Checks for any vertices uncovered as MIS */
+    // Vertices not in MIS that do NOT have a neighbor in MIS
     val nonCovered = g_in.vertices
-      .filter { case (_, attr) => attr == -1 }
+      .filter { case (vid, attr) => attr == -1 } // not in MIS
       .leftOuterJoin(maxCheck)
       .filter { case (_, (_, opt)) => opt.getOrElse(0) == 0 }
       .count()
 
     return nonCovered == 0
   }
+
 
   def main(args: Array[String]) {
 
@@ -163,3 +115,10 @@ object main{
     }
   }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: `<none>`.
