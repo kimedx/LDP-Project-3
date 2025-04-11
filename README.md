@@ -1,6 +1,7 @@
 # Large Scale Data Processing: Project 3
 
 Worked alone (Harim Kim)
+Link for resulting MIS files: https://drive.google.com/file/d/1Ba7oTAmYCRN8_KjjE9nJfLGdVL8NkpmL/view?usp=drive_link
 
 ## Results for Submission
 ### Part 1 (verifyMIS)
